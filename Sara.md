@@ -1,1 +1,1 @@
-Fun Fact: Tree Hugger
+Fun Fact: Tree Hugger, Animal LOVER!

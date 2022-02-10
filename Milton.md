@@ -1,1 +1,1 @@
-Fun fact about Milton Clark is that he is good at solving Sudoku Puzzles.
+Fun fact: Great at solving Sudoku Puzzles.

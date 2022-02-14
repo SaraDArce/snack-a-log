@@ -1,9 +1,7 @@
 // DEPENDENCIES
-
 const express = require("express");
 const app = express();
 const cors = require("cors");
-
 const snackController = require("./controllers/snackController.js");
 
 // CONFIGURATION
@@ -19,6 +17,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/snacks", snackController);
+
 
 // EXPORT
 module.exports = app;

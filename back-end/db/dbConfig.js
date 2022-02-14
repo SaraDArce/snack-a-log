@@ -17,7 +17,6 @@ const cn = DATABASE_URL
       port: PG_PORT,
       database: PG_DATABASE,
       user: PG_USER,
-
     };
 
 // alt from express docs

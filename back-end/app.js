@@ -16,7 +16,8 @@ app.get("/", (req, res) => {
   res.send("Get Snack'n at Snack-a-log!");
 });
 
-app.use("/snacks", snackController );
+app.use("/snacks", snackController);
+
 
 // EXPORT
 module.exports = app;

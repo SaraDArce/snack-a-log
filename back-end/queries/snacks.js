@@ -1,5 +1,23 @@
 const db = require("../db/dbConfig.js");
 
+const getAllSnacks = async () => {
+  try {
+    const allSnacks = await db.any("SELECT * FROM snacks");
+    return allSnacks;
+  } catch (err) {
+    return err;
+  }
+};
+
+const getOneSnack = async (id) => {
+  try {
+    const oneSnack = await db.one("SELECT * FROM snacks WHERE id=$1", id);
+    return oneSnack;
+  } catch (err) {
+    return err;
+  }
+};
+
 const createSnack = async (snack) => {
   try {
     const newSnack = await db.one(
@@ -45,6 +63,8 @@ const updateSnack = async (id, snack) => {
 };
 
 module.exports = {
+  getAllSnacks,
+  getOneSnack,
   createSnack,
   deleteSnack,
   updateSnack,

@@ -4,7 +4,36 @@ const {
   createSnack,
   deleteSnack,
   updateSnack,
+  getAllSnacks,
+  getOneSnack,
 } = require("../queries/snacks.js");
+
+snacks.get("/", async (req, res) => {
+  try {
+    const allSnacks = await getAllSnacks();
+    if (allSnacks[0]) {
+      res.status(200).json(allSnacks);
+    } else {
+      res.status(500).json({ error: "No snacks were returned from db" });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+snacks.get("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const snack = await getOneSnack(id);
+    if (snack.id) {
+      res.status(200).json(snack);
+    } else {
+      res.status(500).json({ error: "Snack not found" });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 snacks.post("/", async (req, res) => {
   const { body } = req;

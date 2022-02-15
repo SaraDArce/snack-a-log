@@ -18,6 +18,7 @@ app.get("/", (req, res) => {
 
 app.use("/snacks", snackController);
 
+
 // 404
 app.get("*", (req, res) => {
   res.status(404).send("Page not found");

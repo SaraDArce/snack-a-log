@@ -19,6 +19,7 @@ const cn = DATABASE_URL
       user: PG_USER,
     };
 
+    // db.any("SELECT * FROM snacks;").then((data)=>console.log(data));
 // alt from express docs
 // var db = pgp('postgres://username:password@host:port/database')
 

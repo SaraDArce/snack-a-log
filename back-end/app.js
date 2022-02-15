@@ -1,11 +1,11 @@
 // DEPENDENCIES
-const express = require("express");
-const app = express();
 const cors = require("cors");
+const express = require("express");
 const snackController = require("./controllers/snackController.js");
+const app = express();
 
 // CONFIGURATION
-require("dotenv").config();
+// require("dotenv").config();
 
 // MIDDLEWARE
 app.use(cors());
@@ -18,6 +18,11 @@ app.get("/", (req, res) => {
 
 app.use("/snacks", snackController);
 
+
+// 404
+app.get("*", (req, res) => {
+  res.status(404).send("Page not found");
+});
 
 // EXPORT
 module.exports = app;

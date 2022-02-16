@@ -12,7 +12,7 @@ function SnackDetails() {
     axios
       .get(API + "/snacks/" + id)
       .then((res) => {
-        setSnack(res.data);
+        setSnack(res.data.payload);
       })
       .catch((err) => {
         console.log(err);

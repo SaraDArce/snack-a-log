@@ -1,4 +1,5 @@
 const express = require("express");
+const capitalizeSnackName = require("../capitalizeSnackName.js");
 const confirmHealth = require("../confirmHealth.js");
 const snacks = express.Router();
 
@@ -43,6 +44,7 @@ snacks.post("/", async (req, res) => {
   try {
       body.is_healthy = confirmHealth(body);
     const createdSnack = await createSnack(body);
+    capitalizeSnackName(createdSnack);
     if (createdSnack.id) {
       res.status(200).json({ success: true, payload: createdSnack });
     } else {

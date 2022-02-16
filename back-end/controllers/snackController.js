@@ -1,6 +1,7 @@
 const express = require("express");
 const snacks = express.Router();
 const capitalization = require("../capitalization");
+const confirmHealth = require("../confirmHealth");
 
 const {
   createSnack,

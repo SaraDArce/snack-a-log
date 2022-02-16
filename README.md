@@ -1,3 +1,12 @@
+Milton Clark
+Sara D'Arce
+
+https://git.heroku.com/sd-mc-snack-log-be.git
+
+https://sd-mc-snack-a-log.netlify.app
+
+
+
 # Snack-A-Log Pair Programming Lab
 
 ## Overview

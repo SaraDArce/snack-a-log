@@ -12,7 +12,7 @@ function SnackDetails() {
     axios
       .get(API + "/snacks/" + id)
       .then((res) => {
-        setSnack(res.data);
+        setSnack(res.data.payload);
       })
       .catch((err) => {
         console.log(err);
@@ -31,37 +31,39 @@ function SnackDetails() {
   };
 
   return (
-    <article>
-      <h3>
-        {true ? (
-          <span>{front - end / src / assets / heart - solid.png}</span>
-        ) : null}{" "}
-        {snack.name}
-      </h3>
-      <h5>
-        <span>
-          <a href={snack.image}>{snack.name}</a>
-        </span>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {snack.image}
-      </h5>
-      {/* <h6>{snack.fiber}</h6>
+    <aside>
+      <article>
+        <h3>
+          {true ? (
+            <span>{front - end / src / assets / heart - solid.png}</span>
+          ) : null}{" "}
+          {snack.name}
+        </h3>
+        <h5>
+          <span>
+            <a href={snack.image}>{snack.name}</a>
+          </span>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {snack.image}
+        </h5>
+        {/* <h6>{snack.fiber}</h6>
       <p>{snack.added_sugar}</p> */}
-      <div className="showNavigation">
-        <div>
-          <Link to={`/snacks/${snack.id}/edit`}>
-            <button>Back</button>
-          </Link>
+        <div className="showNavigation">
+          <div>
+            <Link to={`/snacks/${snack.id}/edit`}>
+              <button>Back</button>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/snacks/${id}/edit`}>
+              <button>Edit</button>
+            </Link>
+          </div>
+          <div>
+            <button onClick={handleDelete}>Delete</button>
+          </div>
         </div>
-        <div>
-          <Link to={`/snacks/id/edit`}>
-            <button>Edit</button>
-          </Link>
-        </div>
-        <div>
-          <button onClick={handleDelete}>Delete</button>
-        </div>
-      </div>
-    </article>
+      </article>
+    </aside>
   );
 }
 

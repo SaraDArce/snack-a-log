@@ -40,7 +40,7 @@ snacks.get("/:id", async (req, res) => {
   }
 });
 
-snacks.post("/", capitalization, async (req, res) => {
+snacks.post("/", async (req, res) => {   // capitalization in 
   const { body } = req;
   try {
     const createdSnack = await createSnack(body);

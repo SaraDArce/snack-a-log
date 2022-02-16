@@ -6,9 +6,9 @@ export default function NavBar() {
       <h1>
         <Link to="/snacks">Snacks</Link>
       </h1>
-      {/* <button>
-        <Link to="/bookmarks/new">New Bookmark</Link>
-      </button> */}
+      <button>
+        <Link to="/snacks/new">New Snack</Link>
+      </button>
     </nav>
   );
 }

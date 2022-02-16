@@ -7,10 +7,8 @@ import axios from "axios";
 
 function HeartHealth({ snackHealth }) {
   const [snack, setSnack] = useState({});
-  let {id}=useParams();
-  useEffect(() => {
-    
-  })
+  let { id } = useParams();
+  useEffect(() => {});
 
   if ((snackHealth = true)) {
     return <p>healthy food {heartSolid} </p>;

@@ -43,7 +43,7 @@ snacks.post("/", async (req, res) => {
   const { body } = req;
   try {
       body.is_healthy = confirmHealth(body);
-      body.name = capitalizeSnackName(body);
+      // body.name = capitalizeSnackName(body);
     const createdSnack = await createSnack(body);
     if (createdSnack.id) {
       res.status(200).json({ success: true, payload: createdSnack });

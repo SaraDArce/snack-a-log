@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import HeartHealth from "./HeartHealth";
 
-const ShowAllSnacks = () => {
+const AllSnacks = () => {
     const [ snacks, setSnacks ] = useState([]);
 
     const API = process.env.REACT_APP_API_URL;
@@ -36,4 +36,4 @@ const ShowAllSnacks = () => {
 
 };
 
-export default ShowAllSnacks;
+export default AllSnacks;

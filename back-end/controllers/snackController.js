@@ -1,5 +1,8 @@
 const express = require("express");
+const capitalizeSnackName = require("../capitalizeSnackName.js");
+const confirmHealth = require("../confirmHealth.js");
 const snacks = express.Router();
+
 
 const {
   createSnack,
@@ -15,7 +18,7 @@ snacks.get("/", async (req, res) => {
     if (allSnacks[0]) {
       res.status(200).json({ success: true, payload: allSnacks });
     } else {
-      res.status(404).json({ error: "No snacks were returned from db" });
+      res.status(404).json({ success: false, payload: "No snacks were returned from db" });
     }
   } catch (err) {
     return err;
@@ -29,7 +32,7 @@ snacks.get("/:id", async (req, res) => {
     if (snack.id) {
       res.status(200).json({ success: true, payload: snack });
     } else {
-      res.status(404).json({ error: "Snack not returned from db" });
+      res.status(404).json({ success: false, payload: "Snack not found" });
     }
   } catch (err) {
     return err;
@@ -39,11 +42,13 @@ snacks.get("/:id", async (req, res) => {
 snacks.post("/", async (req, res) => {
   const { body } = req;
   try {
+      body.is_healthy = confirmHealth(body);
+      // body.name = capitalizeSnackName(body);
     const createdSnack = await createSnack(body);
     if (createdSnack.id) {
-      res.status(200).json(createdSnack);
+      res.status(200).json({ success: true, payload: createdSnack });
     } else {
-      res.status(500).json({ error: "Snack creation error" });
+      res.status(422).json({ success: false, payload: "Snack creation error" });
     }
   } catch (err) {
     console.log(err);
@@ -54,9 +59,9 @@ snacks.delete("/:id", async (req, res) => {
   const { id } = req.params;
   const deletedSnack = await deleteSnack(id);
   if (deletedSnack.id) {
-    res.status(200).json(deletedSnack);
+    res.status(200).json({ success: true, payload: deletedSnack });
   } else {
-    res.status(404).json({ error: "Snack not found" });
+    res.status(404).json({ success: false, payload: "Snack not found" });
   }
 });
 
@@ -67,9 +72,9 @@ snacks.put("/:id", async (req, res) => {
   console.log(updatedSnack);
   
   if (updatedSnack.id) {
-    res.status(200).json(updatedSnack);
+    res.status(200).json({ success: true, payload:updatedSnack });
   } else {
-    res.status(404).json({ error: "Snack not found" });
+    res.status(404).json({ success: false, payload: "Snack not found" });
   }
 });
 

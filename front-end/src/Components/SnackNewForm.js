@@ -1,11 +1,21 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const API = process.env.REACT_APP_API_URL;
 
+
 function SnackNewForm() {
   let navigate = useNavigate();
+  
+  const [snack, setSnack] = useState({
+    name: "",
+    image: "",
+    fiber: 0,
+    protein: 0,
+    added_sugar: 0,
+    is_healthy: true,
+  });
 
   const addSnack = (newSnack) => {
     axios
@@ -19,22 +29,11 @@ function SnackNewForm() {
       .catch((c) => console.warn("catch", c));
   };
 
-  const [snack, setSnack] = useState({
-    name: "",
-    image: "",
-    fiber: Integer,
-    protein: Integer,
-    added_sugar: Integer,
-    is_healthy: true,
-  });
 
   const handleTextChange = (event) => {
     setSnack({ ...snack, [event.target.id]: event.target.value });
   };
 
-  const handleCheckboxChange = () => {
-    setSnack({ ...snack, is_healthy: !bookmark.is_healthy });
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -56,7 +55,7 @@ function SnackNewForm() {
         <input
           id="image"
           type="text"
-          pattern="http[s]*://.+"
+          // pattern="http[s]*://.+"
           //   required?
           value={snack.image}
           placeholder="http://"
@@ -65,7 +64,7 @@ function SnackNewForm() {
         <label htmlFor="fiber">Fiber:</label>
         <input
           id="fiber"
-          type="integer"
+          type="number"
           name="fiber"
           value={snack.fiber}
           placeholder="0"
@@ -74,7 +73,7 @@ function SnackNewForm() {
         <label htmlFor="protein">Protein:</label>
         <input
           id="protein"
-          type="integer"
+          type="number"
           name="protein"
           value={snack.protein}
           placeholder="0"
@@ -83,26 +82,17 @@ function SnackNewForm() {
         <label htmlFor="added_sugar">Added Sugar:</label>
         <input
           id="added_sugar"
-          type="integer"
+          type="number"
           name="added_sugar"
           value={snack.added_sugar}
           placeholder="0"
           onChange={handleTextChange}
         />
-        <label htmlFor="is_healthy">Healthy:</label>
-        <input
-          id="is_healthy"
-          type="checkbox"
-          onChange={handleCheckboxChange}
-          checked={snack.is_healthy}
-        />
-
         <br />
-
         <input type="submit" />
       </form>
-      <Link to={`/snacks/${id}`}>
-        <button>Nevermind!</button>
+      <Link to={`/snacks`}>
+        <button>Back</button>
       </Link>
     </div>
   );

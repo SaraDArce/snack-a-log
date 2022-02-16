@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // COMPONENTS
 
 import AllSnacks from "./Components/AllSnacks";
-import SnackDetails from "./Components/SnackDetails";
 import SnackEditForm from "./Components/SnackEditForm";
 import SnackNewForm from "./Components/SnackNewForm";
 // import HeartHealth from "./Components/HeartHealth";

@@ -102,7 +102,7 @@ function SnackNewForm() {
         <input type="submit" />
       </form>
       <Link to={`/snacks/${id}`}>
-        <button>Nevermind!</button>
+        <button>Submit Input</button>
       </Link>
     </div>
   );
